@@ -6,7 +6,7 @@ const Element = ({name,color,handleClick}) => {
         main: color
       };
     return (
-        <ElementContainer onClick={()=>handleClick(name)}>
+        <ElementContainer onClick={()=>handleClick({name,color})}>
             <ThemeProvider theme={theme}>
             <OuterCircle>
                 <InnerCircle>

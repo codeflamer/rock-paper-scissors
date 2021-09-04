@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import { addComputerAnswer, addUserAnswer } from '../features/gameSlice'
+import { addComputerAnswer, addComputerColor, addUserAnswer, addUserColor, getComputerAnswer } from '../features/gameSlice'
 import Element from './Element'
 
 const Elements = () => {
@@ -10,18 +10,25 @@ const Elements = () => {
     const computerOptions = [{name:'paper',color:'--paperFrom'},{name:'scissors',color:'--scissorsFrom'},{name:'rock',color:'--rockFrom'}];
     const dispatch = useDispatch()
     const history = useHistory();
+    const compAns = useSelector(getComputerAnswer);
 
-    const handleClick = (name)=>{
-        console.log('I am clicked',name);
-        dispatch(addUserAnswer(name));
-        history.push('/decision');
-        // console.log(computerAnswer)
+    const handleClick = ({name,color})=>{
+        if(name === compAns){
+            randomFunc()
+        }
+        else{
+            dispatch(addUserAnswer(name));
+            dispatch(addUserColor(color));
+            history.push('/decision');
+        }
+    }
+    const randomFunc = () =>{
+        const answer = computerOptions[Math.floor(Math.random()*3)];
+        dispatch(addComputerAnswer(answer.name))
+        dispatch(addComputerColor(answer.color))
     }
     useEffect(()=>{
-        console.log(computerOptions[Math.floor(Math.random()*3)]);
-        const answer = computerOptions[Math.floor(Math.random()*3)];
-        // dispatch(addComputerAnswer(answer))
-        
+        randomFunc()
     })
 
     return (
