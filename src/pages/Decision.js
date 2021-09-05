@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import Element from '../components/Element'
 import Loading from '../components/Loading'
-import { getComputerAnswer, getComputerColor, getUserAnswer, getUserColor } from '../features/gameSlice'
+import { decreaseTotalScore, 
+        getComputerAnswer, 
+        getComputerColor, 
+        getComputerImage, 
+        getUserAnswer, 
+        getUserColor, 
+        getUserImage, 
+        increaseTotalScore } from '../features/gameSlice'
 
 const Decision = () => {
     const [showElement,setShowElement] = useState(false);
@@ -14,23 +21,29 @@ const Decision = () => {
     const userColor= useSelector(getUserColor);
     const compAns = useSelector(getComputerAnswer);
     const compColor = useSelector(getComputerColor);
-    const history = useHistory();
-    // console.log(color);
+    const compImage = useSelector(getComputerImage);
+    const userImage = useSelector(getUserImage);
+    const dispatch = useDispatch();
+    // console.log(userImage);
 
     const handleQuery = ()=>{
         if (userAns === 'paper' && compAns === 'rock'){
+            dispatch(increaseTotalScore())
             setResult('You Win')
         }
         else if(userAns === 'rock' && compAns === 'scissors'){
+            dispatch(increaseTotalScore())
             setResult('You Win')
         }
         else if(userAns === 'scissors' && compAns === 'paper'){
+            dispatch(increaseTotalScore())
             setResult('You Win')
         }
-        else if(userAns === compAns) {
-            history.push('/');
-        }
+        // else if(userAns === compAns) {
+        //     history.push('/');
+        // }
         else{
+            dispatch(decreaseTotalScore())
             setResult('You Lose');
         }
     }
@@ -44,14 +57,19 @@ const Decision = () => {
         setTimeout(function() {
             setShowResult(true);
         },3000)
-    })
+    },[userAns])
 
     return (
         <AnswerContainer>
             <AnswerContent>
                 <UserSide>
                     <h3>You Picked</h3>
-                    <Element name={userAns} color={userColor} />
+                    <Element 
+                        name={userAns} 
+                        image={userImage} 
+                        color={userColor} 
+                        sizeBig='300px' 
+                        sizeSmall='220px'/>
                 </UserSide>
                 {showResult ? 
                     <EvaluationResult>
@@ -64,7 +82,12 @@ const Decision = () => {
                 <CompSide>
                     <h3>The House Picked</h3>
                     {showElement ? 
-                        <Element name={compAns} color={compColor} />
+                        <Element 
+                            name={compAns} 
+                            image={compImage} 
+                            color={compColor} 
+                            sizeBig='300px' 
+                            sizeSmall='220px' />
                     :
                         <Loading/>   
                     }
@@ -89,7 +112,7 @@ const AnswerContent = styled.div`
     display:flex;
     justify-content:space-between;
     align-items:center;
-    width:800px;
+    max-width:900px;
     margin:0 auto;
 `
 const UserSide = styled.div`

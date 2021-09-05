@@ -18,8 +18,8 @@ const LoadingContainer = styled.div`
 `
 const LoadingContent = styled.div`
     /* border:1px solid red; */
-    height:200px;
-    width: 200px;
+    height:300px;
+    width: 300px;
     border-radius:100%;
     cursor: pointer;
     background:#182244;

@@ -1,16 +1,19 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 
-const Element = ({name,color,handleClick}) => {
+const Element = ({name,color,handleClick,sizeBig,sizeSmall,image}) => {
     const theme = {
-        main: color
+        main: color,
+        sizeBig: sizeBig,
+        sizeSmall: sizeSmall,
       };
     return (
-        <ElementContainer onClick={()=>handleClick({name,color})}>
+        <ElementContainer onClick={()=>handleClick({name,color,image})}>
             <ThemeProvider theme={theme}>
             <OuterCircle>
                 <InnerCircle>
-                    <p>{name}</p>
+                    {/* <p>{name}</p> */}
+                    <img src={`../${image}`} alt='name'/>
                 </InnerCircle>
             </OuterCircle>
             </ThemeProvider>
@@ -27,8 +30,8 @@ const ElementContainer = styled.div`
 
 const OuterCircle = styled.div`
     /* border:1px solid red; */
-    width:200px;
-    height:200px;
+    width:${props => props.theme.sizeBig};
+    height:${props => props.theme.sizeBig};
     border-radius:100%;
     display: flex;
     flex-direction: column;
@@ -39,8 +42,8 @@ const OuterCircle = styled.div`
 `;
 const InnerCircle = styled.div`
     /* border:1px solid blue; */
-    width:150px;
-    height:150px;
+    width:${props => props.theme.sizeSmall};
+    height:${props => props.theme.sizeSmall};
     border-radius:100%;
     display: flex;
     flex-direction: column;
@@ -48,4 +51,8 @@ const InnerCircle = styled.div`
     justify-content: center;
     background-color:white;
     z-index: 1;
+    img{
+        height:100px;
+        width:100px;
+    }
 `;
