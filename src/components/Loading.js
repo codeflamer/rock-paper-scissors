@@ -17,7 +17,6 @@ const LoadingContainer = styled.div`
     margin-top:20px;
 `
 const LoadingContent = styled.div`
-    /* border:1px solid red; */
     height:270px;
     width: 270px;
     border-radius:100%;

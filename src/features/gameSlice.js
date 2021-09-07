@@ -10,6 +10,7 @@ export const gameSlice = createSlice({
     computerColor:null,
     userImage:null,
     compImage:null,
+    closeBtn:false
   },
   reducers: {
     addUserAnswer: (state,action) => {
@@ -36,11 +37,14 @@ export const gameSlice = createSlice({
     decreaseTotalScore: (state) => {
       state.totalScore -= 1;
     },
+    closeButton:(state,action) =>{
+      state.closeBtn = action.payload;
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addUserAnswer, addComputerAnswer, increaseTotalScore,decreaseTotalScore,addComputerColor,addUserColor,addUserImage,addCompImage } = gameSlice.actions
+export const { addUserAnswer, addComputerAnswer, increaseTotalScore,decreaseTotalScore,addComputerColor,addUserColor,addUserImage,addCompImage,closeButton } = gameSlice.actions
 
 export const getUserAnswer = (state) => state.game.userAnswer;
 export const getComputerAnswer = (state) => state.game.computerAnswer;
@@ -49,5 +53,6 @@ export const getUserColor = (state) => state.game.userColor;
 export const getComputerColor = (state) => state.game.computerColor;
 export const getComputerImage = (state) => state.game.compImage;
 export const getUserImage = (state) => state.game.userImage;
+export const getCloseButton = (state) => state.game.closeBtn;
 
 export default gameSlice.reducer

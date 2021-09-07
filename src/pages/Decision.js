@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Element from '../components/Element'
 import Loading from '../components/Loading'
@@ -24,7 +24,6 @@ const Decision = () => {
     const compImage = useSelector(getComputerImage);
     const userImage = useSelector(getUserImage);
     const dispatch = useDispatch();
-    // console.log(userImage);
 
     const handleQuery = ()=>{
         if (userAns === 'paper' && compAns === 'rock'){
@@ -39,9 +38,6 @@ const Decision = () => {
             dispatch(increaseTotalScore())
             setResult('You Win')
         }
-        // else if(userAns === compAns) {
-        //     history.push('/');
-        // }
         else{
             dispatch(decreaseTotalScore())
             setResult('You Lose');
@@ -57,6 +53,7 @@ const Decision = () => {
         setTimeout(function() {
             setShowResult(true);
         },3000)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[userAns])
 
     return (
@@ -131,7 +128,6 @@ const AnswerContainer = styled.div`
     }
 `
 const AnswerContent = styled.div`
-/* border:1px solid red; */
     display:flex;
     flex-direction: column;
 `

@@ -8,11 +8,17 @@ import {
   Route,
 } from "react-router-dom";
 import Decision from './pages/Decision';
+import Rules from './components/Rules';
+import { getCloseButton } from './features/gameSlice';
+import { useSelector } from 'react-redux';
 
 
 const App = () => {
+  const rules = useSelector(getCloseButton)
+
   return (
     <Router >
+      {rules ? <Rules/> : null }
       <Score/>
       <Switch>
           <Route path="/decision">

@@ -10,6 +10,7 @@ const Score = () => {
         <ScoreContainer>
            <ScoreContent>
                <ScoreText>
+                   {/* <img src='../images/logo.svg'/> */}
                     <h2>ROCK <br/> PAPER <br/> SCISSORS</h2>
                </ScoreText>
                <ScoreValue>
@@ -62,7 +63,6 @@ const ValueContainer = styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
-    /* border:1px solid red; */
     border-radius: 5px;
     padding:20px 50px;
     background-color:white;

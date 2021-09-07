@@ -1,11 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { closeButton } from '../features/gameSlice';
 
 const ButtonRules = () => {
+    const dispatch = useDispatch();
+
     return (
         <ButtonPosition>
             <ButtonContainer>
-                <Button>
+                <Button onClick = {()=>dispatch(closeButton(true))}>
                     Rules
                 </Button>
             </ButtonContainer>
@@ -27,8 +31,6 @@ const ButtonContainer = styled.div`
     flex-direction: column;  
     margin-top:20px;
     align-items: flex-end;
-    /* border:1px solid red; */
-    /* width:100%; */
     @media(max-width:550px){
         align-items: center;
     }

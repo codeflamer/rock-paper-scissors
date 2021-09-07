@@ -114,16 +114,14 @@ const ElementsContent = styled.div`
     flex-direction:column;
     align-items: center;
     padding:0 20px;
-    /* border:1px solid red; */
-    /* justify-content: center; */
+    background: url('../images/bg-triangle.svg') no-repeat ;
+    background-position: center;
 `
 const FirstRow = styled.div`
-    /* border:1px solid red;    */
     display:flex;
     justify-content:space-between;
     width:100%;
     max-width:600px;
-    /* border:1px solid red; */
 `
 const SecondRow = styled.div`
     display:flex;

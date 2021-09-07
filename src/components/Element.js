@@ -31,7 +31,6 @@ const ElementContainer = styled.div`
 `
 
 const OuterCircle = styled.div`
-    /* border:1px solid red; */
     width:${props => props.theme.sizeBig};
     height:${props => props.theme.sizeBig};
     border-radius:100%;
@@ -47,7 +46,6 @@ const OuterCircle = styled.div`
     }
 `;
 const InnerCircle = styled.div`
-    /* border:1px solid blue; */
     width:${props => props.theme.sizeSmall};
     height:${props => props.theme.sizeSmall};
     border-radius:100%;
