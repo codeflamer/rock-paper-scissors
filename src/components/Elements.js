@@ -69,14 +69,22 @@ const Elements = () => {
                         image='images/icon-paper.svg' 
                         handleClick={handleClick} 
                         sizeBig='200px' 
-                        sizeSmall='150px' />
+                        sizeSmall='150px' 
+                        sizeBigMobile='150px'
+                        sizeSmallMobile='110px'
+                        clickable='true'
+                        />
                     <Element 
                         name='scissors' 
                         color='--scissorsFrom' 
                         image='images/icon-scissors.svg'  
                         handleClick={handleClick} 
                         sizeBig='200px' 
-                        sizeSmall='150px' />
+                        sizeSmall='150px' 
+                        sizeBigMobile='150px'
+                        sizeSmallMobile='110px'
+                        clickable='true'
+                        />
                 </FirstRow>
                 <SecondRow>
                     <Element 
@@ -85,7 +93,11 @@ const Elements = () => {
                         image='images/icon-rock.svg' 
                         handleClick={handleClick} 
                         sizeBig='200px' 
-                        sizeSmall='150px' />
+                        sizeSmall='150px' 
+                        sizeBigMobile='150px'
+                        sizeSmallMobile='110px'
+                        clickable='true'
+                        />
                 </SecondRow>
             </ElementsContent>
         </ElementsContainer>
@@ -101,12 +113,16 @@ const ElementsContent = styled.div`
     display:flex;
     flex-direction:column;
     align-items: center;
+    padding:0 20px;
+    /* border:1px solid red; */
     /* justify-content: center; */
 `
 const FirstRow = styled.div`
+    /* border:1px solid red;    */
     display:flex;
     justify-content:space-between;
-    width:500px;
+    width:100%;
+    max-width:600px;
     /* border:1px solid red; */
 `
 const SecondRow = styled.div`

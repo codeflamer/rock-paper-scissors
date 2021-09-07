@@ -18,10 +18,14 @@ const LoadingContainer = styled.div`
 `
 const LoadingContent = styled.div`
     /* border:1px solid red; */
-    height:300px;
-    width: 300px;
+    height:270px;
+    width: 270px;
     border-radius:100%;
     cursor: pointer;
     background:#182244;
-    opacity:1
+    opacity:1;
+    @media(max-width:550px){
+        height:150px;
+        width: 150px;
+    }
 `

@@ -1,14 +1,16 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 
-const Element = ({name,color,handleClick,sizeBig,sizeSmall,image}) => {
+const Element = ({name,color,handleClick,sizeBig,sizeSmall,image,sizeBigMobile,sizeSmallMobile,clickable}) => {
     const theme = {
         main: color,
         sizeBig: sizeBig,
         sizeSmall: sizeSmall,
+        sizeBigMobile: sizeBigMobile,
+        sizeSmallMobile: sizeSmallMobile,
       };
     return (
-        <ElementContainer onClick={()=>handleClick({name,color,image})}>
+        <ElementContainer onClick = {clickable === 'true' ? ()=>handleClick({name,color,image})  : null } >
             <ThemeProvider theme={theme}>
             <OuterCircle>
                 <InnerCircle>
@@ -39,6 +41,10 @@ const OuterCircle = styled.div`
     justify-content: center;
     background:var(${props => props.theme.main});
     z-index:-1;
+    @media(max-width:550px){
+        width:${props => props.theme.sizeBigMobile};
+        height:${props => props.theme.sizeBigMobile};
+    }
 `;
 const InnerCircle = styled.div`
     /* border:1px solid blue; */
@@ -54,5 +60,13 @@ const InnerCircle = styled.div`
     img{
         height:100px;
         width:100px;
+    }
+    @media(max-width:550px){
+        width:${props => props.theme.sizeSmallMobile};
+        height:${props => props.theme.sizeSmallMobile};
+        img{
+            height:60px;
+            width:60px;
+        }
     }
 `;

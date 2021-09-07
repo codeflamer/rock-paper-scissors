@@ -62,14 +62,19 @@ const Decision = () => {
     return (
         <AnswerContainer>
             <AnswerContent>
+                <ContentTop>
                 <UserSide>
                     <h3>You Picked</h3>
                     <Element 
                         name={userAns} 
                         image={userImage} 
                         color={userColor} 
-                        sizeBig='300px' 
-                        sizeSmall='220px'/>
+                        sizeBig='270px' 
+                        sizeSmall='210px'
+                        sizeBigMobile='150px'
+                        sizeSmallMobile='110px'
+                        clickable='false'
+                        />
                 </UserSide>
                 {showResult ? 
                     <EvaluationResult>
@@ -86,13 +91,28 @@ const Decision = () => {
                             name={compAns} 
                             image={compImage} 
                             color={compColor} 
-                            sizeBig='300px' 
-                            sizeSmall='220px' />
+                            sizeBig='270px' 
+                            sizeSmall='210px' 
+                            sizeBigMobile='150px'
+                            sizeSmallMobile='110px'
+                            clickable='false'
+                            />
                     :
                         <Loading/>   
                     }
                     
                 </CompSide>
+                </ContentTop>
+                <ContentBottom>
+                    {showResult ? 
+                        <EvaluationResultMobile>
+                            <h2>{result}</h2>
+                            <Button>
+                                <Link to='/'>Play Again</Link>
+                            </Button>
+                        </EvaluationResultMobile>
+                    : null}
+                </ContentBottom>
             </AnswerContent>
         </AnswerContainer>
     )
@@ -106,15 +126,26 @@ const AnswerContainer = styled.div`
         text-transform: uppercase;
         color:white
     }
+    @media(max-width:550px){
+        padding:0 20px;
+    }
 `
 const AnswerContent = styled.div`
 /* border:1px solid red; */
+    display:flex;
+    flex-direction: column;
+`
+
+const ContentTop = styled.div`
+    width:100%;
     display:flex;
     justify-content:space-between;
     align-items:center;
     max-width:900px;
     margin:0 auto;
+    padding:0 10px;
 `
+const ContentBottom = styled.div``
 const UserSide = styled.div`
     display:flex;
     flex-direction:column;
@@ -135,6 +166,25 @@ align-items:center;
         font-size:50px;
         text-transform: uppercase;
     }
+    @media(max-width:778px){
+        display:none;
+    }
+`
+
+const EvaluationResultMobile = styled.div`
+    display:none;
+    @media(max-width:778px){
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        h2{
+            color:white;
+            font-size:55px;
+            text-transform: uppercase;
+            margin-top:20px;
+        }
+    }
+    
 `
 
 const Button = styled.button`

@@ -3,22 +3,35 @@ import styled from 'styled-components';
 
 const ButtonRules = () => {
     return (
-        <ButtonContainer>
-            <Button>
-                Rules
-            </Button>
-        </ButtonContainer>
+        <ButtonPosition>
+            <ButtonContainer>
+                <Button>
+                    Rules
+                </Button>
+            </ButtonContainer>
+        </ButtonPosition>
+        
     )
 }
 
 export default ButtonRules;
 
+
+const ButtonPosition = styled.div`
+    position: absolute;
+    bottom:40px;
+    width:100%;
+`
 const ButtonContainer = styled.div`
-    /* border: 1px solid red; */
     display:flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: column;  
     margin-top:20px;
+    align-items: flex-end;
+    /* border:1px solid red; */
+    /* width:100%; */
+    @media(max-width:550px){
+        align-items: center;
+    }
 `
 const Button = styled.button`
     width:150px;
